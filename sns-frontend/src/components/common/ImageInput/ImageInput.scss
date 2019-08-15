@@ -1,0 +1,49 @@
+@import 'utils';
+
+
+.profile-wrap{
+    position:relative;
+    margin-bottom:16px;
+    .btn-upload{
+        position:absolute;
+        right:35%;
+        top:7%;
+        font-size:1.4rem;
+        color: $oc-blue-5;
+        background:white;
+        overflow:hidden;
+        width:21px;
+        height:21px;
+        border-radius:100%;
+        transition:0.2s;
+        cursor: pointer;
+        input{
+            visibility: hidden;
+            font-size:0;
+        }
+        svg{
+            vertical-align: top;
+        }
+        &:hover{
+            color:$oc-gray-7;
+        }
+    }
+
+}
+.image-wrap{
+    width:100px;
+    height:100px;
+    border-radius:100%;
+    border:1px solid $oc-gray-1; 
+    position:relative;
+    overflow:hidden;
+    margin : 0 auto;
+    img{
+        position: absolute;
+        width:100%;
+        height:auto;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }   
+}

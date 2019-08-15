@@ -1,0 +1,48 @@
+@import "utils";
+
+.header {
+  background-color: $oc-gray-8;
+  color: #a4a4a4;
+  a {
+    color: #fefefe;
+  }
+
+  .header-content {
+    //width: 1200px;
+    margin: 0 auto;
+    padding: 0.65rem 0.9rem;
+    .logo a {
+      float: left;
+      font-weight: 900;      
+      letter-spacing: -0.8px;
+    }
+    .logo img {
+      width: 132px;
+      vertical-align: middle;
+    }
+
+    .member {
+      padding: 0.5rem 0;
+      float: right;
+      ul li {
+        float: left;
+        width: 84px;
+        text-align: right;
+        margin-left: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        span {
+          margin-left: 8px;
+        }
+
+        &:hover {
+          text-decoration: underline;
+          color: #fefefe;
+          a {
+            color: #fefefe;
+          }
+        }
+      }
+    }
+  }
+}
