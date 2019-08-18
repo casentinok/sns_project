@@ -32,8 +32,8 @@ class HeaderContainer extends Component {
   }
   render() {
     const { handleLoginClick, handleLogoutClick, handleSigninClick } = this;
-    const { login, name, _id } = this.props;
-
+    const { login, name, _id, profile } = this.props;
+    
     return (
       <Header
         onLoginModal={handleLoginClick}
@@ -41,6 +41,7 @@ class HeaderContainer extends Component {
         onSigninModal={handleSigninClick}
         login={login}
         name={name}
+        profile={profile}
         uid={_id}
       />
     );
@@ -52,6 +53,7 @@ export default connect(
     login: state.modal.get("login"),
     name: state.user.getIn(["result", "name"]),
     _id: state.user.getIn(["result", "_id"]),
+    profile : state.user.getIn(['result','profile']),
     message: state.modal.get("message"),  
   }),
   dispatch => ({

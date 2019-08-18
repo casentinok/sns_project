@@ -10,7 +10,6 @@ import storage from "lib/storage";
 class App extends Component {
   handleCheckLogin = async () => {
     const user = storage.get("loggedInfo");
-    console.log(user);
     if (!user) return;
 
     const { UserActions } = this.props;

@@ -5,21 +5,20 @@ const Joi = require("@hapi/joi");
     POST api/user/
 */
 exports.join = async ctx => {
-  // const schema = Joi.object().keys({
-  //   userid: Joi.string().required(),
-  //   password: Joi.string().required(),
-  //   name: Joi.string().required(),
-  //   email: Joi.string()
-  //     .regex(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/).required(),
-  //   phone: Joi.string().required()
-  // });
-  // const result = Joi.validate(ctx.request.body, schema);
-  // if (result.error) {
-  //   ctx.status = 400;
-  //   ctx.body = result.error;
-  //   return;
-  // }
-
+  const schema = Joi.object().keys({
+    userid: Joi.string().required(),
+    password: Joi.string().required(),
+    name: Joi.string().required(),
+    email: Joi.string()
+      .regex(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/).required(),
+    phone: Joi.string().required()
+  });
+  const result = Joi.validate(ctx.request.body, schema);
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = result.error;
+    return;
+  }
   const { userid, password, name, email, phone } = ctx.request.body;
   const imgname  = ctx.file.filename;
   console.log(ctx.request.body);
@@ -36,7 +35,7 @@ exports.join = async ctx => {
   try {
     await user.save();
     ctx.status = 200;
-    ctx.body = user;
+    //ctx.body = user;
   } catch (e) {
     ctx.throw(e, 500);
   }
@@ -160,6 +159,7 @@ exports.read = async ctx => {
 exports.check = ctx => {
   console.log('check');
   const { user } = ctx.request;
+  console.log(user);
   if (!user) {
     //ctx.status = 403;
     ctx.body = {
@@ -170,7 +170,8 @@ exports.check = ctx => {
   }
   ctx.body = {
     _id: user._id,
-    name: user.name
+    name: user.name,
+    profile: user.profile
   };
 };
 /*

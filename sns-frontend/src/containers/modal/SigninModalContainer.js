@@ -32,24 +32,14 @@ class SiginModalContainer extends Component {
     const { error } = this.state;
     const keys = Object.keys(error);
     await keys.forEach(k => {
-      console.log(error[k]);
       if (error[k]) {
         console.log('returned');
         return;
       }
     });
-    const formData = new FormData();
-    let signinfo = signininfo.toJS();
-    await Object.keys(signinfo).forEach(key => {
-      console.log(key, signinfo[key]);
-      formData.append(key, signinfo[key]);
-    });
-    console.log(signinfo);
-    formData.append("asdsf", "aweve");
-    console.log(formData);
     try {
-      //await UserActions.join(signininfo.toJS());
-      //ModalActions.hideModal('signin');
+      await UserActions.join(signininfo.toJS());
+      ModalActions.hideModal('signin');
     } catch (e) {
       console.log(e);
     }
@@ -62,6 +52,7 @@ class SiginModalContainer extends Component {
     const IdRegex = /^[A-Za-z0-9+]*$/;
     const EmailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
     const PhoneRegex = /^\d{2,3}-\d{3,4}-\d{4}$/;
+    const PasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
     const { name, value } = e.target;
     const { UserActions } = this.props;
     const { changeState } = this;
@@ -103,6 +94,27 @@ class SiginModalContainer extends Component {
         await UserActions.setError(false);
       }
       changeState(name, message);
+    }
+    // password check
+    if(name === "password"){
+      if(!PasswordRegex.test(value)){
+        await UserActions.setError(true);
+        message ="비밀번호는 최소 8자리, 숫자, 문자, 특수문자 각각 1개 이상 포함해야 합니다.";
+      }else {
+        await UserActions.setError(false);
+      }
+      changeState(name , message);
+    }
+
+    if(name === "password_confirm"){
+      const { password } = this.props.signininfo.toJS();
+      if(password !== value){
+        await UserActions.setError(true);
+        message = "비밀번호가 일치하지 않습니다.";
+      }else{
+        await UserActions.setError(false);
+      }
+      changeState(name,message);
     }
   };
 

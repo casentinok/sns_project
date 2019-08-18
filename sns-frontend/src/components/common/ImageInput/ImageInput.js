@@ -74,7 +74,7 @@ class ImageInput extends Component {
 
   render() {
     const { handleChange } = this;
-    const { imgSrc, resize, bigwidth, bigHeight, imgObj } = this.state;
+    const { imgSrc, resize, bigwidth, bigHeight } = this.state;
     const{ file } = this.props;
     console.log(file);
     let src = imgSrc || Img;

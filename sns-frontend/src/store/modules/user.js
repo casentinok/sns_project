@@ -120,7 +120,7 @@ export default handleActions(
       type : JOIN,
       onSuccess: (state, action)=>{
         console.log(action);
-        return state.set('signininfo',initialState.get('sigininfo'));
+        return state.set('signininfo',initialState.get('signininfo'));
       },
       onError: (state,action)=>{
         console.log(action);

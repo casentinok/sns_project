@@ -7,13 +7,12 @@ import { faUser, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-i
 import Logo from "log_text_20190530.svg";
 const cx = classNames.bind(styles);
 
-const Header = ({ onLoginModal, onLogoutModal,onSigninModal, name, uid}) => {
-  
-  console.log(name, uid);
+const Header = ({ onLoginModal, onLogoutModal,onSigninModal, name, profile, uid}) => {  
   const LI = name ? (
     <ul>
       <li>
-        <FontAwesomeIcon icon={faUser} />
+        {/*<FontAwesomeIcon icon={faUser} />*/}
+        <img className={cx("profile_img")} src={`/img/${profile}`} alt="user's profile"/>
         <span>
           <Link to={`/uinfo/${uid}`}>{name} 님</Link>
         </span>

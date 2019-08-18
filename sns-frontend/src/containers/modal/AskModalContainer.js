@@ -11,7 +11,7 @@ class AskModalContainer extends Component {
     const { UserActions, ModalActions } = this.props;
     try {
       await UserActions.logout();
-      storage.remove("loggedinfo");
+      storage.remove("loggedInfo");
       ModalActions.hideModal("ask");
     } catch (e) {
       console.log(e);

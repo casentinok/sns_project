@@ -23,7 +23,8 @@ const User = new Schema({
 User.methods.generateToken= function(){
   const payload = {
     _id: this._id,
-    name : this.name
+    name : this.name,
+    profile : this.profile.imgname
   };
 
   return generateToken(payload, "auth");
