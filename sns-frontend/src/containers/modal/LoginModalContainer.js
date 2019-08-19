@@ -40,9 +40,11 @@ class LoginModalContainer extends Component {
       this.handleLogin();
     }
   };
+  
   componentDidMount(){
     console.log("componentDidMount");
   }
+  
   componentWillUnmount(){
     console.log("componentWillUnmount");
   }

@@ -34,7 +34,7 @@ const Header = ({ onLoginModal, onLogoutModal,onSigninModal, name, profile, uid}
       </li>
     </ul>
   );
-
+  
   return (
     <header className={cx("header")}>
       <div className={cx("header-content clear-fix")}>

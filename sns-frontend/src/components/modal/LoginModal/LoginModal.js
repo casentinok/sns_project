@@ -1,6 +1,7 @@
 import React from "react";
 import ModalWrapper from "components/modal/ModalWrapper";
 import Logo from "log_black.svg";
+import Input from 'components/common/Input';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 const LoginModal = ({
