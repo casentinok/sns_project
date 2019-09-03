@@ -12,7 +12,7 @@
 # production
 /build
 /public/img
-
+**/__snapshots__/
 # misc
 .DS_Store
 .env.local
