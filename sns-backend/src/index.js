@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const { jwtMiddleware } = require('lib/token');
 
 mongoose.Promise = global.Promise;
-
+mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser : true }).then(()=>{
     console.log('connected to mongodb');
 }).catch(e=>{
