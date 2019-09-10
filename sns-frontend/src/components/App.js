@@ -16,11 +16,19 @@ class App extends Component {
 
     try {
       await UserActions.check();
+      const { result } = this.props;
+      const { logout } = result.toJS();
+
+      if (logout) {
+        storage.remove("loggedInfo");
+      }
+      
     } catch (e) {
       console.log(e);
     }
   };
   componentDidMount() {
+    console.log("Appmounted");
     this.handleCheckLogin();
   }
 
@@ -36,7 +44,9 @@ class App extends Component {
   }
 }
 export default connect(
-  null,
+  state => ({
+    result: state.user.get("result")
+  }),
   dispatch => ({
     UserActions: bindActionCreators(userActions, dispatch)
   })

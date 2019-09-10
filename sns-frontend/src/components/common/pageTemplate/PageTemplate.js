@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const PageTemplate = ({children})=>(
-    <div className={cx('page-template')}>
+    <div className={cx('page-template')}>        
         {children}
     </div>
 )

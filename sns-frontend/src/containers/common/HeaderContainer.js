@@ -21,9 +21,6 @@ class HeaderContainer extends Component {
     ModalActions.showModal("signin");
   };
   initialize = () => {
-    /*  const {UserActions, result} = this.props;    
-    const user =  storage.get("loggedInfo"); */
-    console.log(this.props.message);
   };
 
   componentDidMount() {

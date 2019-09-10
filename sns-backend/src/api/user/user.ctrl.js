@@ -163,8 +163,7 @@ exports.check = ctx => {
   if (!user) {
     //ctx.status = 403;
     ctx.body = {
-      _id: "",
-      name: ""
+      logout : true
     };
     return;
   }

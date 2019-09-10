@@ -33,7 +33,6 @@ exports.jwtMiddleware = async (ctx, next) => {
         httpOnly: true
       });
     }
-    console.log(decoded);
     ctx.request.user = decoded;
     await next();
   } catch (e) {

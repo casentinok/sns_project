@@ -3,17 +3,16 @@ import PageTemplate from "components/common/pageTemplate";
 import HeaderContainer from "../containers/common/HeaderContainer";
 import UserInfoContainer from "containers/user/UserInfoContainer";
 import LoginModalContainer from "containers/modal/LoginModalContainer";
+
 import AskModalContainer from "containers/modal/AskModalContainer";
-const UserPage = () => {
-    
-    
+
+const UserPage = ({ history }) => {
   return (
     <PageTemplate>
-      <HeaderContainer/>    
+      <HeaderContainer />
       <LoginModalContainer />
       <AskModalContainer />
-      <UserInfoContainer/>
-      
+      <UserInfoContainer history={history} />
     </PageTemplate>
   );
 };
