@@ -6,11 +6,11 @@ import AskModalContainer from "containers/modal/AskModalContainer";
 import SigninModalContainer from 'containers/modal/SigninModalContainer';
 import PostcodeModalContainer from '../containers/modal/PostcodeModalContainer';
 
-const MainPage = () =>(
+const MainPage = ({history}) =>(
     <PageTemplate>
         <HeaderContainer/>
         <LoginModalContainer />
-        <AskModalContainer />
+        <AskModalContainer history={history}/>
         <SigninModalContainer/>
         <PostcodeModalContainer/>
     </PageTemplate>

@@ -12,8 +12,9 @@ const LoginModal = ({
   visible,
   userid,
   password,
-  error
-}) => (
+  error,
+  message}) => {
+  return(
   <ModalWrapper visible={visible}>
     <div>
       <div className="btn-close" onClick={onCancel}>
@@ -24,38 +25,15 @@ const LoginModal = ({
           <img src={Logo} alt="social n space" />
         </div>
       </div>
-      <div>
-        <div className="input-style">
-          <div>
-            <FontAwesomeIcon icon={faUser} />
-          </div>
-          <input
-            type="text"
-            placeholder="You're ID"
-            value={userid}
-            onChange={onChange}
-            onKeyPress={onKeyPress}
-            name="userid"
-          />
-        </div>
-        <div className="input-style">
-          <div>
-            <FontAwesomeIcon icon={faLock} />
-          </div>
-          <input
-            type="password"
-            placeholder="You're PASSWORD"
-            value={password}
-            onChange={onChange}
-            onKeyPress={onKeyPress}
-            name="password"
-          />
-        </div>
+      <div> 
+      <Input type="text" name="userid" value={userid} placeholder="You're ID" onChange={onChange} onKeyPress={onKeyPress} icon={faUser}/>
+      <Input type="password" name="password" value={password} error={error} message={message}placeholder="You're PASSWORD" onChange={onChange} onKeyPress={onKeyPress} icon={faLock}/>
       </div>
-      {error && "error"}
+  {/*error && message*/}
       <div className="btn-login" onClick={onLogin}>LOGIN</div>
     </div>
-  </ModalWrapper>
-);
+    </ModalWrapper>
+  );
+};
 
 export default LoginModal;

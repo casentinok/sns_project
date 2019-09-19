@@ -35,9 +35,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/uinfo" component={UserPage} />
+        <Switch>         
+            <Route exact path="/" component={MainPage} />
+            <Route path="/uinfo" component={UserPage} />
         </Switch>
       </div>
     );

@@ -64,23 +64,24 @@ class SiginModalContainer extends Component {
     //id check
     if (name === "userid") {
       if (value.length < 5 || value.length > 20) {
-        await UserActions.setError(true);
+        await UserActions.setError({type, error : true});
         message = "5글자이상 20글자이하만 작성가능합니다";
+        console.log(message);
       } else if (!IdRegex.test(value)) {
-        await UserActions.setError(true);
+        await UserActions.setError({type, error : true});
         message = "영문과 숫자 조합만 사용가능합니다.";
       } else {
-        await UserActions.setError(false);
+        await UserActions.setError({type, error :false});
       }
       changeState(name, message);
     }
     // email check
     if (name === "email") {
       if (!EmailRegex.test(value)) {
-        await UserActions.setError(true);
+        await UserActions.setError({type, error :true});
         message = "잘못된 이메일 형식입니다.";
       } else {
-        UserActions.setError(false);
+        await UserActions.setError({type, error :false});
       }
       changeState(name, message);
     }
@@ -88,20 +89,20 @@ class SiginModalContainer extends Component {
     if (name === "phone") {
       if (!PhoneRegex.test(value)) {
         console.log("phone validated");
-        await UserActions.setError(true);
+        await UserActions.setError({type, error :true});
         message = "잘못된 형식입니다.";
       } else {
-        await UserActions.setError(false);
+        await UserActions.setError({type, error :false});
       }
       changeState(name, message);
     }
     // password check
     if(name === "password"){
       if(!PasswordRegex.test(value)){
-        await UserActions.setError(true);
+        await UserActions.setError({type, error :true});
         message ="비밀번호는 최소 8자리, 숫자, 문자, 특수문자 각각 1개 이상 포함해야 합니다.";
       }else {
-        await UserActions.setError(false);
+        await UserActions.setError({type, error :false});
       }
       changeState(name , message);
     }
@@ -109,10 +110,10 @@ class SiginModalContainer extends Component {
     if(name === "password_confirm"){
       const { password } = this.props.signininfo.toJS();
       if(password !== value){
-        await UserActions.setError(true);
+        await UserActions.setError({type, error :true});
         message = "비밀번호가 일치하지 않습니다.";
       }else{
-        await UserActions.setError(false);
+        await UserActions.setError({type, error :false});
       }
       changeState(name,message);
     }
@@ -153,7 +154,7 @@ class SiginModalContainer extends Component {
           await UserActions.checkOverlap({ name, value });
           const { error } = this.props;
           if (error) {
-            message = "중복된 정보입니다.";
+            message = "존재하는 아이디 입니다.";
             changeState(name, message);
           } else {
             message = "";

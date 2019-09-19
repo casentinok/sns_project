@@ -103,7 +103,7 @@
 .input-style {
   position: relative;
   padding:0 0.5rem;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   color: $oc-gray-7;
   font-size: 1.1rem;
   div:first-child {
@@ -146,12 +146,15 @@
 
 }
 .error-alert{
-  width:90%;
+  width:85%;
   margin-left:10%;
   color:$oc-red-6;
   font-size:12px;
-  height:20px;
-  line-height:20px;
+  margin-top:2px;
+  /*height:20px;*/
+  line-height:15px;
+  z-index:2;
+  letter-spacing: -0.1px;
   position:absolute; 
 
 }
@@ -185,8 +188,10 @@
     background: $oc-blue-5;
     border:none;
     cursor: pointer;
+    transition:.2s;
     &:hover {
       background: $oc-gray-4;
+      color:#666;
     }
   }
 }

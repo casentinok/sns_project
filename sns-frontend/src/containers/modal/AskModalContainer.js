@@ -8,11 +8,13 @@ import storage from "lib/storage";
 
 class AskModalContainer extends Component {
   handleOk = async () => {
-    const { UserActions, ModalActions } = this.props;
+    const { UserActions, ModalActions, history } = this.props;
     try {
       await UserActions.logout();
       storage.remove("loggedInfo");
+      history.push('/');
       ModalActions.hideModal("ask");
+      
     } catch (e) {
       console.log(e);
     }

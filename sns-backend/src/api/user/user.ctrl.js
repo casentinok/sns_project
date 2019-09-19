@@ -63,10 +63,7 @@ exports.login = async ctx => {
     user = await User.findOne({ userid: userid });
     if (!user || user.password !== password) {
       console.log("\n\n");
-      ctx.status = 403;
-      ctx.body = {
-        success: false
-      };
+      ctx.status = 403;      
       return;
     }
   } catch (e) {
@@ -86,7 +83,8 @@ exports.login = async ctx => {
   ctx.body = {
     _id: user._id,
     name: user.name,
-    profile: user.profile.imgname
+    profile: user.profile.imgname,
+    success : true
   };
 };
 

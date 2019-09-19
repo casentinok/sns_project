@@ -1,4 +1,4 @@
-import React from "react";
+import React,{StrictMode} from "react";
 import PageTemplate from "components/common/pageTemplate";
 import HeaderContainer from "../containers/common/HeaderContainer";
 import UserInfoContainer from "containers/user/UserInfoContainer";
@@ -9,10 +9,12 @@ import AskModalContainer from "containers/modal/AskModalContainer";
 const UserPage = ({ history }) => {
   return (
     <PageTemplate>
+    <StrictMode>
       <HeaderContainer />
       <LoginModalContainer />
-      <AskModalContainer />
+      <AskModalContainer history={history}/>
       <UserInfoContainer history={history} />
+      </StrictMode>
     </PageTemplate>
   );
 };

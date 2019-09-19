@@ -1,3 +1,4 @@
+'use strict';
 import { createAction, handleActions } from "redux-actions";
 
 import { Map, fromJS } from "immutable";
@@ -34,7 +35,6 @@ const initialState = Map({
   logininfo: Map({
     userid: "",
     password: "",
-    logged: false,
     error: false
   }),
   userinfo: Map({}),
@@ -71,20 +71,21 @@ export default handleActions(
       return state.setIn(["signininfo","file"],file);
     },
     [SET_ERROR] : (state, action)=>{
-      const { payload : error} = action;
-      return state.setIn(['signininfo','error'],error);
+      console.log(action);
+      const {type,error} = action.payload;
+      return state.setIn([type,'error'],error);
     },
     ...pender({
       type: LOGIN,
       onSuccess: (state, action) => {
         const { success } = action.payload.data;
         return state
-          .setIn(["logininfo", "logged"], success)
+          .setIn(["logininfo","error"],!success)
           .set("result", Map(action.payload.data));
       },
       onError: (state, action) => {
         const { error } = action;
-        return state.set(["logininfo", "error"], error);
+        return state.setIn(["logininfo", "error"], error);
       }
     }),
     ...pender({
